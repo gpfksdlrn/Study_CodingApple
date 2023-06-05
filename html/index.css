@@ -199,25 +199,25 @@ input[type=email]{  /*input[속성명=속성값]*/
     border: 1px solid black;
     border-radius: 5px;
 }
-.name-wrap div{
+.w-50{
     width: 50%;
     float: left;
     padding: 10px;
 }
-.name-wrap input[type=text]{
+.w-50 input[type=text]{
     padding: 10px;
     font-size: 15px;
     border: 1px solid black;
     border-radius: 5px;
 }
-.name-wrap div:last-child{
+.w-50 div:last-child{
     margin-left: 30px;
 }
-.message-wrap{
+.w-100{
     clear: both;
     display: inline-block;
 }
-.message-wrap input[type=text]{
+.w-100 input[type=text]{
     width: 500px;
     height: 200px;
     padding: 10px;
@@ -242,3 +242,34 @@ input[type=email]{  /*input[속성명=속성값]*/
     border: 0px;
 }
 /*===========layout1.html============*/
+/*===========cart.html============*/
+.wrap{
+    background-color : #c2d3de;
+    padding: 30px;
+    width: 100%;
+}
+.wrap h3{
+    color: rgb(84,109,137);
+}
+.cart-table{
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+.cart-table td, .cart-table th{
+    padding: 15px;
+    border-bottom: 1px solid #c2d3de;
+}
+.cart-table tr:last-child{
+    text-align: right;
+}
+.cart-table tr{
+    border-bottom: 1px solid rgb(183,203,213);
+}
+.cart-table img{
+    float: left;
+}
+/*===========cart.html============*/
