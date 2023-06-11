@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="index.css" rel="stylesheet">
+    <!-- 조건부로 css파일 첨부하기
+        [if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="css/ie8.css" />
+        <![endif]
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav class="flex-container">
@@ -14,24 +20,6 @@
         <div class="flex-item">products</div>
         <div class="flex-item">services</div>
     </nav>
-    <div class="nav-container">
-        <div class="nav-item">
-            <div>Fast Shipping</div>
-            <div>Iorem ipsum</div>
-        </div>
-        <div class="nav-item">
-            <div>Good Service</div>
-            <div>Iorem ipsum</div>
-        </div>
-        <div class="nav-item">
-            <div>Free Coupons</div>
-            <div>Iorem ipsum</div>
-        </div>
-        <div class="nav-item">
-            <div>New Produces</div>
-            <div>Iorem ipsum</div>
-        </div>
-    </div>
     <div class="main-background">
         <h4 class="main-title">Buy Our Shoes! Now On Sale</h4>
         <p class="main-content">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -41,10 +29,49 @@
         <h4>How we design our shoes</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
-    <br>
-    <div class="explain-box" style="padding: 50px;">
-        <h4>How we design our shoes</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <div class="nav-container">
+        <div class="nav-item">
+            <i class="fas fa-cart-arrow-down fa-3x"></i>
+            <h4>Fast Shipping</h4>
+            <p>Iorem ipsum</p>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-thumbs-up fa-3x"></i>
+            <h4>Good Service</h4>
+            <p>Iorem ipsum</p>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-ticket-alt fa-3x"></i>
+            <h4>Free Coupons</h4>
+            <p>Iorem ipsum</p>
+        </div>
+        <div class="nav-item">
+            <i class="fas fa-rss fa-3x"></i>
+            <h4>New Produces</h4>
+            <p>Iorem ipsum</p>
+        </div>
+    </div>
+    <div class="shop-bg">
+        <div class="shop-container">
+            <div class="shop-item">
+                <div style="position: relative;">
+                    <div class="overlay"></div>
+                    <img src="./img/product1-1.jpg">
+                </div>
+            </div>
+            <div class="shop-item">
+                <div style="position: relative;">
+                    <div class="overlay"></div>
+                    <img src="./img/product1-2.jpg">
+                </div>
+            </div>
+            <div class="shop-item">
+                <div style="position: relative;">
+                    <div class="overlay"></div>
+                    <img src="./img/product1-3.jpg">
+                </div>
+            </div>
+        </div>
     </div>
     <div class="form-background">
         <div class="form-white">
