@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+}
+div {
+box-sizing: border-box;
+}
+h1 {
+font-size: 30px;
+}
+h4 {
+font-size: 22px;
+}
+
+/*====================
+portfolio1.html
+====================*/
+.main-background{
+    background-image: linear-gradient(to bottom, #499add, #4e61c0);
+    height: 550px;
+    padding: 20px;
+    color: white;
+}
+.main-container{
+    max-width: 1200px;
+    margin: auto;
+}
+.main-text{
+    float: left;
+    margin-top: 50px;
+}
+.main-iphone{
+    width: 400px;
+    margin-top: 95px;
+    float: right;
+}
+.btn{
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-black{
+    background-color: black;
+    color: white;
+}
+.sub-container{
+    text-align: center;
+}
+
+/*====================
+portfolio1.html(반응형)
+====================*/
+@media screen and (max-width: 1200px){
+    .main-iphone {
+        width: 260px;
+        display: block;
+        float: none;
+        margin: auto;
+        margin-top: 42px;
+        border-bottom: 1px solid gray;
+      }
+      .main-text {
+        float: none;
+        margin-top: 50px;
+        text-align: center;
+      }
+}
