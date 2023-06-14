@@ -1,14 +1,20 @@
 body {
-    margin: 0;
+	margin: 0;
 }
 div {
-box-sizing: border-box;
+	box-sizing: border-box;
+}
+p {
+	font-size: 16px;
 }
 h1 {
-font-size: 30px;
+	font-size: 30px;
 }
 h4 {
-font-size: 22px;
+	font-size: 22px;
+}
+h5 {
+	font-size: 20px;
 }
 
 /*====================
@@ -80,15 +86,36 @@ portfolio1.html
 }
 
 .portfolio{
+    padding-top: 60px;
+    padding-bottom: 60px;
     text-align: center;
 }
-.portfolio-container{
 
-}
 .portfolio-item{
-    width: 50%;
     float: left;
+    width: 50%;
     height: 350px;
+    background-size: cover;
+}
+.white-box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border: 0px solid white;
+}
+.white-box:hover{
+    border: 30px solid white;
+}
+.portfolio-container{
+    text-align: left;
+    width: 1200px;
+    margin: auto;
+}
+.portfolio-text{
+    color: white;
+    padding: 50px;
+    width: 100%;
 }
 .portfolio-item1{
     background-image: url(./img/portfolio-1.jpg);
@@ -102,6 +129,7 @@ portfolio1.html
 .portfolio-item4{
     background-image: url(./img/portfolio-4.jpg);
 }
+
 /*====================
 portfolio1.html(반응형)
 ====================*/
@@ -118,5 +146,15 @@ portfolio1.html(반응형)
         float: none;
         margin-top: 50px;
         text-align: center;
+      }
+      .portfolio-container {
+        text-align: left;
+        width: 520px;
+        margin: 0 auto;
+    }
+      .portfolio-item {
+        width: 520px;
+        float: none;
+        background-size: cover;
       }
 }
