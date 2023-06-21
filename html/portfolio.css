@@ -45,8 +45,6 @@ portfolio1.html
   max-width: 1200px;
   margin: auto;
 }
-
-
 @media screen and (max-width : 992px) {
   .main-iphone {
     width: 260px;
@@ -62,8 +60,6 @@ portfolio1.html
     text-align: center;
   }
 }
-
-
 .btn {
   padding: 15px 20px;
   font-size: 16px;
@@ -76,7 +72,6 @@ portfolio1.html
   background: #444;
   color: white;
 }
-
 .service {
   background-color: #4e61c0;
   width: 100%;
@@ -103,7 +98,6 @@ portfolio1.html
 .service-items div {
   width: 25%;
 }
-
 @media screen and (max-width : 992px) {
 	.service-items {
 	display: flex;
@@ -113,8 +107,6 @@ portfolio1.html
 	width: 100%;
 	}
 }
-
-
 .portfolio {
   padding-top: 60px;
   padding-bottom: 60px;
@@ -149,8 +141,6 @@ portfolio1.html
 .portfolio-item4{
     background-image: url(./img/portfolio-4.jpg);
 }
-
-
 .white-box {
   position: absolute;
   width: 100%;
@@ -158,18 +148,15 @@ portfolio1.html
   border : 0px solid white;
   transition: border 0.5s;
 }
-
 .white-box:hover {
   border : 30px solid white;
 }
-
 @media screen and (max-width : 768px) {
   .portfolio-item {
     float: none;
     width: 100%
   }
 }
-
 .sub-container{
     text-align: center;
     margin-bottom: 50px;
