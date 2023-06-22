@@ -331,6 +331,10 @@ input[type=email]{  /*input[속성명=속성값]*/
 .overlay-wrap:hover .overlay-black{
     margin-top: 50%;
 }
+.pseudo::first-letter{
+    color: red;
+    font-size: 30px;
+}
 /* 애니메이션 만드는 step
     1. 시작 스타일 만들기
     2. 최종 스타일 만들기
