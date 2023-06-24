@@ -1,6 +1,11 @@
 @charset "UTF-8";
+:root{
+  --main-color : red;
+}
 .text {
   color: #2a4c6e;
+  background-color: var(--main-color);
+  font-size: calc(40% -20px);
 }
 
 .box {
