@@ -51,6 +51,42 @@
             <p>Iorem ipsum</p>
         </div>
     </div>
+    <input type="file">
+    <input type="range">
+    <progress value="0.5"></progress>
+    <style>
+        input[type=file]::-webkit-file-upload-button{ 
+            /* 
+                1. -webkit- : 크롬, 사파리, Edge에서만 적용되는 스타일
+                2. -moz-    : Firefox에서만 적용
+                3. -ms-     : Explorer에서만 적용
+
+                user agent stylesheet -> 브라우저 기본 CSS
+            */
+            background: skyblue;
+            border: none;
+        }
+        input[type=range]{
+            appearance: none;
+        }
+        input[type=range]::-webkit-slider-thumb{
+            appearance: none; /*브라우저 기본 CSS 안보이게*/
+            background: red;
+            width: 50px;
+            height: 50px;
+        }
+        progress{
+            appearance: none;
+        }
+        progress::-webkit-progress-bar{
+            appearance: none; /*브라우저 기본 CSS 안보이게*/
+            background: yellow;;
+        }
+        progress::-webkit-progress-value{
+            appearance: none;
+            background: black;
+        }
+    </style>
     <div class="shop-bg">
         <div class="shop-container">
             <div class="shop-item">

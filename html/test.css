@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.text {
+  color: #2a4c6e;
+}
+
+.box {
+  background: #333333;
+  /* 
+      덧셈뺄셈은 px 단위는 px단위끼리, %단위는 %단위끼리 맞춰야하고,
+      곱셈 나눗셈은 보통 뒤에 단위를 쓰지 않는다. 쓰면 이상한 자료형이 된다.
+      곱셈 나눗셈은 괄호 안에 작성해야 한다.
+  */
+  font-size: 18px;
+  width: 200px;
+  height: 100px;
+}/*# sourceMappingURL=test.css.map */
