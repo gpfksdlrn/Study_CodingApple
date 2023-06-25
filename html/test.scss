@@ -1,3 +1,6 @@
+/* 다른 파일에 있는 내용 가져오고 싶을 때 */
+@use 'reset';
+
 $메인색상 : #2a4c6e;
 $서브색상 : #333333;
 $기본사이즈 : 16px;
@@ -16,4 +19,88 @@ $기본사이즈 : 16px;
     font-size: $기본사이즈 + 2px;
     width: (100px * 2);
     height: (300px / 3);
+}
+
+.main-bg{   /* 셀렉터 대신 쓰는 nesting 문법 UI들을 물텅이로 관리 가능하여 관리가 편하다.*/
+    h4{
+        font-size: 16px;
+    }
+    button{
+        color: red;
+    }
+}
+
+
+.navbar{
+    :hover{
+        color: blue;
+    }
+}
+/* .navbar :hover */
+.navbar{
+    &:hover{
+        color: blue;
+    }
+}
+/* .navbar:hover  => & 기호를 붙여주면 셀렉터를 스페이스바 없이 붙일 수 있다. */
+
+/* @extend 문법 
+    이미 존재하는 속성들을 복붙하지 않고 사용할 수 있다.
+    아래의 % 는 임시클래스인데, CSS파일에서 클래스로 컴파일하지 않고 싶을 때 쓰는 기호.
+    컴파일하고 나면 % 기호 안에 있는 것들은 흔적도 없이 사라진다.
+*/
+%btn{
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+}
+.btn-green{
+    @extend %btn;
+    color: green;
+}
+.btn-red{
+    @extend %btn;
+    color: red;
+}
+.btn-blue{
+    @extend %btn;
+    color: blue;
+}
+
+/* @mixin 문법 : 긴 코드를 짧은 단어로 축약할 때 씀 */
+@mixin letter($font-size, $구멍){
+    font-size: $font-size;
+    #{ $구멍 }: -1px;
+}
+h2{
+    @include letter(48px, letter-spacing);
+    color: reset.$메인칼라;
+}
+h3{
+    @include letter(30px, letter-spacing);
+}
+h4{
+    @include letter(20px, letter-spacing);
+}
+.list-group {
+    >li{
+        list-style: none;
+        padding: 15px;
+        border: 1px solid #eee;
+    }
+    li:hover{
+        background-color: skyblue;
+        color: white;
+    }
+}
+.alert-box{
+    display: flex;
+    padding: 15px;
+    border: 1px solid #eee;
+    width: 90%;
+    height: 50px;
+    margin-left: 40px;
+}
+.alert-box p{
+    margin: 0;
 }

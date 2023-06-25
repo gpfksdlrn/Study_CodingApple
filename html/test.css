@@ -1,11 +1,20 @@
 @charset "UTF-8";
-:root{
-  --main-color : red;
+/*  reset.scss
+    첨부용 파일로 따로 컴파일 할 이유가 없다.
+    _ 기호를 파일명 맨앞에 사용하면 "이 파일은 CSS파일로 따로 컴파일 하지 말아주세요"라는 의미
+    그냥 첨부용 파일
+*/
+div, input, textarea {
+  box-sizing: border-box;
 }
+
+body {
+  margin: 0px;
+}
+
+/* 다른 파일에 있는 내용 가져오고 싶을 때 */
 .text {
   color: #2a4c6e;
-  background-color: var(--main-color);
-  font-size: calc(40% -20px);
 }
 
 .box {
@@ -18,4 +27,85 @@
   font-size: 18px;
   width: 200px;
   height: 100px;
+}
+
+.main-bg { /* 셀렉터 대신 쓰는 nesting 문법 UI들을 물텅이로 관리 가능하여 관리가 편하다.*/ }
+.main-bg h4 {
+  font-size: 16px;
+}
+.main-bg button {
+  color: red;
+}
+
+.navbar :hover {
+  color: blue;
+}
+
+/* .navbar :hover */
+.navbar:hover {
+  color: blue;
+}
+
+/* .navbar:hover  => & 기호를 붙여주면 셀렉터를 스페이스바 없이 붙일 수 있다. */
+/* @extend 문법 
+    이미 존재하는 속성들을 복붙하지 않고 사용할 수 있다.
+    아래의 % 는 임시클래스인데, CSS파일에서 클래스로 컴파일하지 않고 싶을 때 쓰는 기호.
+    컴파일하고 나면 % 기호 안에 있는 것들은 흔적도 없이 사라진다.
+*/
+.btn-blue, .btn-red, .btn-green {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+}
+
+.btn-green {
+  color: green;
+}
+
+.btn-red {
+  color: red;
+}
+
+.btn-blue {
+  color: blue;
+}
+
+/* @mixin 문법 : 긴 코드를 짧은 단어로 축약할 때 씀 */
+h2 {
+  font-size: 48px;
+  letter-spacing: -1px;
+  color: brown;
+}
+
+h3 {
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+
+h4 {
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+
+.list-group > li {
+  list-style: none;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+.list-group li:hover {
+  background-color: skyblue;
+  color: white;
+}
+
+.alert-box {
+  display: flex;
+  padding: 15px;
+  border: 1px solid #eee;
+  width: 90%;
+  height: 50px;
+  margin-left: 40px;
+}
+
+.alert-box p {
+  margin: 0;
 }/*# sourceMappingURL=test.css.map */

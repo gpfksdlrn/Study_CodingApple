@@ -1,0 +1,14 @@
+/*  reset.scss
+    첨부용 파일로 따로 컴파일 할 이유가 없다.
+    _ 기호를 파일명 맨앞에 사용하면 "이 파일은 CSS파일로 따로 컴파일 하지 말아주세요"라는 의미
+    그냥 첨부용 파일
+*/
+div, input, textarea{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+}
+
+$메인칼라 : brown;
