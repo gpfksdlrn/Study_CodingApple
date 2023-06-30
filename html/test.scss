@@ -93,14 +93,27 @@ h4{
         color: white;
     }
 }
-.alert-box{
+.alert-box-green{
     display: flex;
-    padding: 15px;
+    padding: 10px;
+    border-radius: 5px;
     border: 1px solid #eee;
-    width: 90%;
+    background: #DFF0D9;
     height: 50px;
     margin-left: 40px;
 }
-.alert-box p{
-    margin: 0;
+.alert-box-blue{
+    @extend .alert-box-green;
+    background: #DBEDF8;
+}
+.alert-box-yellow{
+    @extend .alert-box-green;
+    background: #FDF7E3;
+}
+.alert-box-green p{
+    align-self: center;
+}
+.alert-box-green span{
+    color: green;
+    font-weight: 600;
 }

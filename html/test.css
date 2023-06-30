@@ -97,15 +97,29 @@ h4 {
   color: white;
 }
 
-.alert-box {
+.alert-box-green, .alert-box-yellow, .alert-box-blue {
   display: flex;
-  padding: 15px;
+  padding: 10px;
+  border-radius: 5px;
   border: 1px solid #eee;
-  width: 90%;
+  background: #DFF0D9;
   height: 50px;
   margin-left: 40px;
 }
 
-.alert-box p {
-  margin: 0;
+.alert-box-blue {
+  background: #DBEDF8;
+}
+
+.alert-box-yellow {
+  background: #FDF7E3;
+}
+
+.alert-box-green p, .alert-box-blue p, .alert-box-yellow p {
+  align-self: center;
+}
+
+.alert-box-green span, .alert-box-blue span, .alert-box-yellow span {
+  color: green;
+  font-weight: 600;
 }/*# sourceMappingURL=test.css.map */
