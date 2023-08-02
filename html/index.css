@@ -346,12 +346,119 @@ input[type=email]{  /*input[속성명=속성값]*/
     3. 언제 최종스타일로 변하는지
     4. transition으로 애니메이션
 */
+.ani-text{
+    text-align: center;
+}
+.ani-text:hover{
+    animation-name: 왔다갔다;
+    animation-duration: 1s;
+}
+@keyframes 왔다갔다{
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(-100px);
+    }
+    100%{
+        transform: translateX(100px);
+    }
+}
+/*trnsform & animation 숙제1*/
+.ani-button{
+    padding: 15px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    display: block;
+    margin: 30px auto;
+}
+.ani-button:hover{
+    animation-name: shake;
+    animation-duration: 0.4s;
+}
+@keyframes shake{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(-10deg);
+    }
+    50%{
+        transform: rotate(10deg);
+    }
+    75%{
+        transform: rotate(-10deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+/*trnsform & animation 숙제2*/
+.ani-plus{
+    margin: 50px auto;
+    text-align: center;
+    font-size: 70px;
+    width: 84px;
+    cursor: pointer;
+}
+.ani-plus:hover{
+    animation-name: scale;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes scale{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(45deg) scale(2);
+    }
+}
+/*trnsform & animation 숙제3*/
+.ani-navbar{
+    width: 200px;
+    background: black;
+    color: white;
+    height: 100%;
+    padding: 25px;
+    z-index: 5;
+    text-align: right;
+    position: fixed;
+    transition: all 1s;
+    transform: translateX(-150px);
+}
+.ani-navbar:hover{
+    transform: translateX(0px);
+    text-align: center;
+}
+.ani-navbar:hover p{
+    animation-name: slide;
+    animation-duration: 1s;
+}
+@keyframes slide{
+    0%{
+        transform: translateX(-250px);
+    }
+    50%{
+        transform: translateX(50px) skewX(-30deg);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
 @media screen and (max-width: 1200px){
     .main-title{
         font-size: 30px;
     }
     .nav-container{
-        height: 42vh;
+        height: 50vh;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
@@ -366,7 +473,7 @@ input[type=email]{  /*input[속성명=속성값]*/
         font-size: 20px;
     }
     .nav-container{
-        height: 86vh;
+        height: 100vh;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
