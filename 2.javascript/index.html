@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="black-bg">
+        <div class="white-bg">
+          <h4>로그인하세요</h4>
+          <button class="btn btn-danger" id="close">닫기</button>
+        </div>
+    </div> 
+
+    <div class="alert-box" id="alert">
+        <p id="alert-text"></p>
+        <div class="alert-close" onclick="alertStatus('none');">X</div>
+    </div>
+    <button onclick="alertStatus('block', '아이디');">버튼1</button>
+    <button onclick="alertStatus('block', '비밀번호');">버튼2</button>
+    <button id="btn3">버튼3</button>
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand">Navbar</span>
+          <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav> 
+
+      <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul> 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function alertStatus(status, input){
+            document.querySelector('#alert').style.display = status;
+            document.querySelector('#alert-text').innerHTML = input + '를 입력하세요';
+        }
+
+        document.querySelector('.navbar-toggler').addEventListener('click', function(){
+            document.querySelectorAll('.list-group')[0].classList.toggle('show');
+        })
+
+        $('#btn3').click(function(){
+            
+        });
+    </script>
+</body>
+</html>
