@@ -220,9 +220,19 @@
     </script>
     <script>
         /* 모달창 검은 배경 누르면 모달창 닫는 기능 */
-        document.querySelector('.black-bg').addEventListener('click', function(){
-            //$('.black-bg').removeClass('show-modal');
-            document.querySelector('.black-bg').classList.remove('show-modal');
+        document.querySelector('.black-bg').addEventListener('click', function(e){
+            //e.target;   //유저가 실제로 누른거
+            //e.currentTarget;    //이벤트리스너 달린 곳
+            //this;               //이벤트리스너 달린 곳
+            //e.preventDefault    //이벤트 기본 동작 막아줌
+            //e.stopPropagation   //내 상위요소로 이벤트 버블링 막아줌
+            
+            if(e.target == document.querySelector('.black-bg')){
+                //$('.black-bg').removeClass('show-modal');
+                document.querySelector('.black-bg').classList.remove('show-modal');
+            }
+
+
         })
     </script>
 </body>
