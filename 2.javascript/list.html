@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row"></div>
+    </div>
+    <div class="container">
+        <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var template = '';
+        var cnt = 0;    // 유저가 더보기 누른 횟수
+
+        // function morePress(cnt){
+        //     var products;
+        //     if(cnt == 0){
+        //         products = [
+        //             { id: 0, price: 70000, title: "Blossom Dress" },
+        //             { id: 1, price: 50000, title: "Springfield Shirt" },
+        //             { id: 2, price: 60000, title: "Black Monastery" },
+        //         ];
+        //     }else if(cnt > 0){
+        //         $.get(`https://codingapple1.github.io/js/more${cnt}.json`)
+        //         .done((data) => {
+
+        //         })
+        //     }
+        // }
+
+
+
+
+
+
+
+
+
+
+        function moreBtn(cnt){
+            if(cnt == 0){
+                var products = [
+                    { id: 0, price: 70000, title: "Blossom Dress" },
+                    { id: 1, price: 50000, title: "Springfield Shirt" },
+                    { id: 2, price: 60000, title: "Black Monastery" },
+                ];
+                tempText(products);
+                
+            }else if(cnt > 0){
+                $.get(`https://codingapple1.github.io/js/more${cnt}.json`)
+                .done((data) => {
+                    tempText(data);
+                });
+            }
+        }
+        
+        function tempText(data){
+            var moreTemp1 = '';
+            data.forEach(ele => {
+                moreTemp1 += `<div class="col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${ele.title}</h5>
+                            <p>가격 : ${ele.price}</p>
+                            </div>`;
+            });
+            $('.row').append(moreTemp1);
+        }
+
+        moreBtn(0);
+
+        $('#more').click(function(){
+            cnt++;
+            moreBtn(cnt);
+        });
+    </script>
+
+<!--
+      <script>
+        $.get('https://codingapple1.github.io/price.json') // <- JSON을 object로 자동변환해줌
+            .done(function(data){   
+                console.log(data.price);
+            })
+            .fail(function(){
+                console.log('fail');
+            })
+
+        fetch('https://codingapple1.github.io/price.json')
+            .then(res => res.json()) // <- 받아온 JSON을 object로 바꿔주는 기능
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+      </script>
+-->
+
+</body>
+</html>

@@ -8,11 +8,42 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <div class="card-group container">
+        <div class="card">
+            <img src="https://via.placeholder.com/600">
+            <div class="card-body">
+                <h5>Card title</h5>
+                <p>가격 : 70000</p>
+                <button class="btn btn-danger">주문하기</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-3">
+        <div class="card p-3">
+            <span class="p-name">상품명</span>
+            <span class="p-price">가격</span>
+        </div>
+    </div>
+
+    <form class="container my-5 form-group">
+        <p>상품선택</p>
+        <select class="form-select mt-2 p-type">
+            <option>모자</option>
+            <option>셔츠</option>
+            <option>바지</option>
+        </select>
+        <select class="form-select mt-2 p-size form-hide"></select>
+    </form>
+    <!-- <div id="test"></div> -->
+
     <div class="container mt-5">
         <ul class="list">
-            <li class="tab-button">Products</li>
-            <li class="tab-button">Information</li>
-            <li class="tab-button">Shipping</li>
+            <li class="tab-button" data-id="0">Products</li>
+            <!--document..querySelector('.tab-button').dataset.id  => '0' 으로 나온다.-->
+            <li class="tab-button" data-id="1">Information</li>
+            <li class="tab-button" data-id="2">Shipping</li>
         </ul>
         <div class="tab-content">
             <p>상품설명입니다. Product</p>
@@ -27,9 +58,42 @@
 
 
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="tab.js"></script>
+    <script>
+        //html 생성하는 방법1
+        //<div> 안에 <p> 태그를 생성하려면
+        // var a = document.createElement('p');
+        // a.innerHTML = '안녕';
+        // document.querySelector('#test').appendChild(a);
+
+        //html 생성하는 방법2
+        //var a = '<p>안녕</p>';
+        //document.querySelector('#test').insertAdjacentHTML('beforeend', a);
+        //insertAdjacentHTML 문자형 HTML 넣어주는 함수
+        //beforeend 안쪽 맨 밑에 추가하라는 뜻
+        var shirts = [95, 100, 105];
+        var pants = [28, 30, 32];
+        $('.p-type').change(function(e){
+            var selectValue = e.currentTarget.value;
+            var 템플릿 = '';
+            
+            $('.form-select').eq(1).removeClass('form-hide');
+            $('.form-select').eq(1).html('');
+
+            if(selectValue == '셔츠'){
+                shirts.forEach(b => {
+                    템플릿 += `<option>${b}</option>`;
+                });
+            }else if(selectValue == '바지'){
+                pants.forEach(a => {
+                    템플릿 += `<option>${a}</option>`;
+                });
+            }
+
+            $('.form-select').eq(1).append(템플릿);
+        })
+    </script>
 </body>
 </html>
