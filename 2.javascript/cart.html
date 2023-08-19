@@ -1,0 +1,17 @@
+<div id="cart">장바구니</div>
+
+
+<script>
+    //숙제2. localStorage에 있는 상품 보여주기
+    var cartList = JSON.parse(localStorage.getItem('TITLE_KEY'));
+    let cartTag = document.querySelector('#cart');
+    let divTag = document.createElement('div');
+
+    var template = ''
+    cartList.forEach(ele => {
+        template += `<p>${ele}</p>`;
+    });
+
+    cartTag.append(divTag);
+    divTag.innerHTML = template;
+</script>
