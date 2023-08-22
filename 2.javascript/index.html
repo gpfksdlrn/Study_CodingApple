@@ -68,7 +68,7 @@
     <div style="overflow: hidden;">
         <div class="slide-container">
             <div class="slide-box">
-                <img src="img/car1.png">
+                <img src="img/car1.png" draggable="false">
             </div>
             <div class="slide-box">
                 <img src="img/car2.png">
@@ -234,6 +234,50 @@
 
 
         })
+    </script>
+    <script>
+        //function1 내가 드래그한 거리만큼 사진도 왼쪽으로 움직임
+        var start = 0;
+        var sw = false;
+
+        $('.slide-box').eq(0).on('mousedown', function(e){
+            //e.clientX 마우스 좌표
+            //console.log(e.clientX);
+            start = e.clientX;
+            sw = true;
+        });
+        $('.slide-box').eq(0).on('mousemove', function(e){
+            if(sw == true){
+                $('.slide-container').css('transform', 
+                `translateX( ${e.clientX - start}px )`);
+            }
+        });
+        //function2 손놓으면 100px 이상 이동시 다음사진 보임 아니면 이전사진 보임
+        $('.slide-box').eq(0).on('mouseup', function(e){
+            sw = false;
+            if (e.clientX - start < -100) {
+                $('.slide-container').css({
+                    'transform': 'translateX(-100vw)',
+                    'transition': 'all 0.5s'
+                });
+            } else {
+                $('.slide-container').css({
+                    'transform': 'translateX(0vw)',
+                    'transition': 'all 0.5s'
+                });
+            }
+            setTimeout(() => {
+                $('.slide-container').css('transition', 'none')
+            }, 500)
+        });
+        /* 모바일인 경우 터치이므로, 
+            mousedown -> touchstart(터치시작시 발동)
+            mousemove -> touchmove(터치중일 때 계속 발동)
+            mouseup   -> touchend(터치종료시 발동)
+            e.clientX -> e.touches[0].clientX
+            touchend 이벤트리스너에선 e.clientX 말고 e.changedTouches[0].clientX
+           으로 바꿔주면 된다.
+        */
     </script>
 </body>
 </html>
