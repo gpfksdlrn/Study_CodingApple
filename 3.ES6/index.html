@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="btn">버튼이에요</button> -->
+    <div style="display: none;">모달창0</div>
+    <div style="display: none;">모달창1</div>
+    <div style="display: none;">모달창2</div>
+
+    <button>버튼0</button>
+    <button>버튼1</button>
+    <button>버튼2</button>
+    <script>
+        //Arrow function
+        /* [특징]
+            1. 함수 본연의 입출력기능을 아주 직관적으로 잘 표현해준다.
+            2. 파라미터가 하나라면 소괄호 생략 가능
+            3. return 한줄 뿐이라면 return과 중괄호 생략이 가능
+            4. 바깥에 있던 this값을 내부에서 그대로 사용
+        */
+        //var 함수 = a => a + 10;
+        //함수(5);
+
+        //[1,2,3,4].forEach( a => console.log(a));
+
+        // document.getElementById('btn').addEventListener('click',
+        // (e) => {
+        //     e.currentTarget;
+        // });
+
+        var 오브젝트 = {
+            함수 : () => {
+                //console.log(this);
+            }
+        }
+        오브젝트.함수();
+
+        // this & arrow function 연습문제 3개
+        // [1] 간단한 메소드 만들기
+        var 사람 = {
+            name: '손흥민',
+            sayHi: function(){
+                console.log(`안녕 나는 ${this.name}`);
+            }
+        }
+
+        //사람.sayHi();
+
+        // [2] 오브젝트 내의 데이터를 전부 더해주는 메소드 만들기
+        // +조건 : 위에 있는 자료라는 object 중괄호 { } 내에 코드 작성 금지
+        var 자료 = {
+            data: [1,2,3,4,5]
+        }
+        자료.전부더하기 = function(){
+            var sum = 0;
+            console.log(this);
+            this.data.forEach( e => sum += e );
+            //console.log(sum);
+        }
+
+        //자료.전부더하기();
+
+
+        // setTimeout 이용해보기
+        // setTimeout(콜백함수, ms단위의 시간)
+        // ex) setTimeout(function(){ console.log('안녕') }, 1000)
+        // [3] setTimeout을 이용해서 1초 후에 this.innerHTML을 콘솔창에 출력
+        // document.getElementById('btn').addEventListener('click', function(){
+        //     setTimeout(() => { console.log(this.innerHTML); }, 1000);
+        // });
+
+        // 변수 문제1
+        //test1();
+        function test1(){
+            console.log(a);
+            let a = 'hello!';
+        }
+
+        /* 문제1 답안
+            Error!
+            let 변수는 Hoisting이 되긴 하지만 var 변수처럼 자동으로 undefined라는 값이 할당(일명 initialization)되지 않습니다.
+        */
+
+        // 변수 문제2
+        //test2();
+        var test2 = function() {
+            console.log(b);
+            var b = 'hello!';
+        }
+
+        /* 문제2 답안
+            Error!
+            not a function!!
+            함수 선언부분을 보게 되면 function 키워드 대신 변수 만드는 것처럼 함수를 선언과 할당을 하고 있다.
+            이렇게 되면 Hoisting이 되는데, 그 변수에다가 소괄호를 붙여봤자 아직 함수가 아니기 때문에 실행되지 않는다.
+        */
+
+        // 변수 문제3
+        let c = 1;
+        var test3 = function(){
+            c = 2;
+        }
+        //console.log(c);
+
+        /* 문제3 답안
+            c는 1이 출력된다.
+            함수를 정의만 했지 실행을 안시켜서..
+        */
+
+        // 변수 문제4
+        let d = 1;
+        var e = 2;
+        window.d = 3;
+        window.e = 4;
+        //console.log(d + e);
+
+        /* 문제4 답안
+            d는 1, e는 4 => 5가 출력된다.
+            e는 4로 재할당 되었고, 
+            d는 let 변수로 1을 할당하고, 글로벌 변수로 3을 할당했다.
+            이 경우 우리가 d를 사용했을 때 조금 더 범위가 작고 가까운 1을 참조해서 사용한다.
+        */
+
+        // 변수 문제5 콘솔창에 1초에 한번씩 1부터 5까지의 정수를 출력
+        //for(let k = 1; k < 6; k++){
+            //setTimeout(function() {console.log(k);}, k*1000);
+        //}
+
+        /* 문제5 답안
+            var로 선언하여 실행하면 6이 5번 출력되는 것을 확인할 수 있다.
+            하지만 문제는 1,2,3,4,5를 순차적으로 출력하기를 원한다.
+            var -> let으로 변경하면 원하는대로 출력된다.
+            
+            그 이유는...
+            반복문이 돌면서 setTimeout이 바로 실행되는 코드가 아니며,
+            반복문이 다 실행되고 var k = 5;인 전역변수로 남아있다. 그래서 5를 5번 출력되는 것으로 확인된다.
+            let으로 변경한다면,
+            let의 변수는 범위가 중괄호이기에, k값이 반복문 내에 남아있어 1,2,3,4,5를 출력해준다.
+
+        */
+       
+        // 변수 문제6 버튼을 누르면 모달창을 띄우고 싶습니다.
+        var buttons = document.querySelectorAll('button');
+        var modals = document.querySelectorAll('div');
+
+        for( let j = 0; j < 3; j++){
+            buttons[j].addEventListener('click', function(){
+                modals[j].style.display = 'block';
+            });
+        }
+        /* 문제6 답안
+        
+        */
+    </script>
+
+    <script>
+        // tagged literal
+        var x = '손흥민';
+        var z = 'IU'
+        var y = `안녕하세요 ${x} 입니다${z}`;
+
+        function taggedTest(m, n, o){
+            console.log(m);
+            console.log(n);
+            console.log(o);
+        }
+
+        //taggedTest`안녕하세요 ${x} 입니다${z}`;
+
+        var pants = 20;
+        var socks = 100;
+        `바지${pants} 양말${socks}`;
+
+        function taggedTest2(p, q, r){
+            console.log(p[1] + q + p[0] + r);
+        }
+        //taggedTest2`바지${pants} 양말${socks}`;
+
+
+    </script>
+
+    <script>
+        // ES6 Spread Operator (펼침연산자 - 괄호제거 해주는 연산자)
+        // 1. Array에 붙이면 대괄호를 제거해준다.
+        //var arr = ['hello', 'world'];
+        //console.log(...arr);
+
+        // 2. 문자에 붙이면 펼쳐준다.
+        var str = 'hello';
+        //console.log(...str);
+        //console.log('h','e','l','l','o');
+
+        var a = [1,2,3];
+        var b = [4,5];
+        var e = [...a, ...b];
+        //console.log(e);
+
+        var o1 = { a:1, b:2};
+        var o2 = {...o1};
+        //console.log(o2);
+
+        function sum(a,b,c){
+            console.log(a + b + c);
+        }
+
+        var arr = [10, 20, 30];
+        sum.apply(undefined, arr);  //옛날 방식
+        sum(...arr);
+
+        //apply 함수 : 함수 그냥 옮겨와서 실행해주세요 / call과 비슷
+        var person ={
+            인사 : function(){
+                console.log(this.name + '안녕');
+            }
+        }
+        var person2 ={
+            name : '손흥민'
+        }
+        person.인사();
+        person.인사.apply(person2, [1,2]);
+        person.인사.call(person2, 1,2);
+    </script>
+</body>
+</html>
