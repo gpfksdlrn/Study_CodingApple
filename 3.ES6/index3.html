@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Destructuring 문법
+    
+        //array 자료형 안에 있던 데이터 끄집어내 변수로 만들기
+        //var arr = [2,3,4];
+        //var [a,b,c=10] = [];
+    
+        //var obj = {name: 'Kim', age: 30};
+        //var name = obj.name;
+        //var age = obj.age;
+    
+        //var {name, age} = {name: 'Kim', age: 30} //변수명을 key명과 똑같이 쓰면 object 데이터를 꺼내 변수에 담을 수 있다.
+        //var {name, age=31} = {name:'Kim'}; //기본값 지정가능
+        //var {name: 나이 = 'Moon', age=31} = {name: 'Kim'};
+    
+        var name = 'Kim';
+        var age = 30;
+    
+        //var obj = { name: name, age: age};
+        var obj = {name, age};
+    
+        function func( {name, age} ){
+            console.log(name);
+            console.log(age);
+        }
+    
+        //func({ name: 'Kim', age: 30});
+    
+        
+    </script>
+    
+    <!--ES6문법 import 가져올거 from 경로-->
+    <script type="module">
+        // import aaa from './library.js';
+        // console.log(aaa);
+    
+        // import {a, b} from './library.js';
+        // console.log(a, b);
+
+        //export default 한건 맨 왼쪽에 
+        //import c, {a, b} from './library.js';
+        //console.log(c);
+
+        //변수명이 마음에 안들면 새로 짓자
+        // import c, {a as 별명, b} from './library.js';
+        // console.log(별명);
+
+        //모든걸 다 import 해오는 *기호
+        //default는 별도로 가져와야한다
+        import c, * as 별명 from './library.js';
+        console.log(별명.a);
+        console.log(c);
+
+    </script>
+    
+</body>
+</html>

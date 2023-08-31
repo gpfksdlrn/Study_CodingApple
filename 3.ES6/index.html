@@ -14,8 +14,7 @@
     <button>버튼0</button>
     <button>버튼1</button>
     <button>버튼2</button>
-    <script>
-        //Arrow function
+    <script>// Arrow function
         /* [특징]
             1. 함수 본연의 입출력기능을 아주 직관적으로 잘 표현해준다.
             2. 파라미터가 하나라면 소괄호 생략 가능
@@ -157,8 +156,7 @@
         */
     </script>
 
-    <script>
-        // tagged literal
+    <script>// tagged literal
         var x = '손흥민';
         var z = 'IU'
         var y = `안녕하세요 ${x} 입니다${z}`;
@@ -183,8 +181,7 @@
 
     </script>
 
-    <script>
-        // ES6 Spread Operator (펼침연산자 - 괄호제거 해주는 연산자)
+    <script>// ES6 Spread Operator (펼침연산자 - 괄호제거 해주는 연산자)
         // 1. Array에 붙이면 대괄호를 제거해준다.
         //var arr = ['hello', 'world'];
         //console.log(...arr);
@@ -204,12 +201,12 @@
         //console.log(o2);
 
         function sum(a,b,c){
-            console.log(a + b + c);
+            //console.log(a + b + c);
         }
 
         var arr = [10, 20, 30];
         sum.apply(undefined, arr);  //옛날 방식
-        sum(...arr);
+        //sum(...arr);
 
         //apply 함수 : 함수 그냥 옮겨와서 실행해주세요 / call과 비슷
         var person ={
@@ -220,9 +217,391 @@
         var person2 ={
             name : '손흥민'
         }
-        person.인사();
-        person.인사.apply(person2, [1,2]);
-        person.인사.call(person2, 1,2);
+        //person.인사();
+        //person.인사.apply(person2, [1,2]);
+        //person.인사.call(person2, 1,2);
+    </script>
+
+    <script>// Spread, rest 파라미터 연습문제
+        //spread 문제1
+        var aa = [1,2,3];
+        var ab = '김밥';
+        var ac = [...ab, ...aa];
+        //console.log('문제1= ');
+        //console.log(ac);
+
+        //spread 문제2
+        var aa = [1,2,3];
+        var ab = ['you', 'are'];
+        var ac = function(aa, ab){
+            console.log('문제2= ');
+            console.log([[...aa], ...[...ab]][1]);
+            /* 해설
+                [ [...a], ...[...b] ][1] 여기서 a와 b를 집어넣어보면
+                [ [1,2,3], ...['you', 'are'] ][1] 이렇게 되고 spread를 해치워버리면 
+                [ [1,2,3], 'you', 'are' ][1] 이렇게 되고 [1]이라는건 1번째 자료라는 뜻이니까 출력해보면
+                'you'라는 글자가 콘솔창에 뜹니다. 
+            */
+        }
+        //ac(aa, ab);
+
+        //default 파라미터 문제1
+        function fun1(a = 5, b = a * 2){
+            console.log('문제3= ');
+            console.log(a + b);
+            return 10;
+        }
+        //fun1(3);
+
+        //default 파라미터 문제2
+        function fun2(a = 5, b = a * 2){
+            console.log('문제4= ');
+            console.log(a + b);
+        }
+        //fun2(undefined, undefined);
+        
+        //array를 만들어주는 함수를 제작
+        //파라미터로 자료들을 입력하면 그걸 그대로 array를 만들어주는 함수를 제작
+        function fun3(...arr1){
+            return arr1;
+        }
+
+        var newArray = fun3(1,2,3,4,5);
+        //console.log('문제5= ');
+        //console.log(newArray);
+
+        //최댓값 구하기
+        //자바스크립트에서 최댓값을 구하고 싶으면 Math.max()라는 내장함수를 쓸 수 있다.
+        var numbers = [2,3,4,5,6,1,3,2,5,5,4,6,7];
+        //console.log('문제6= ');
+        //console.log(Math.max(...numbers));
+
+        //글자를 알파벳순으로 정렬해주는 함수 만들기
+        //sort()라는 array 내장함수를 붙여 사용(array에만 적용가능)
+        //array가 아니라 문자열에도 적용할 수 있는 알파벳순 정렬함수를 만들고 싶음.
+        function sortFunc1(str){
+            var arr = [...str].sort();
+            console.log('문제7= ');
+            console.log(...arr);
+        }
+        //sortFunc1('bear');
+
+        //데이터마이닝 기능 만들기
+        //글자세기('aacbbb') 라고 입력하면 콘솔창에 {a:2, b:3, c:1}
+        //이렇게 출력해주는 글자세기() 라는 함수를 만들고 싶다.
+        //쉽게말하자면 입력한 단어에 들어있는 알파벳의 갯수를 세어서 오브젝트에 기록해주고 출력해주고 출력해주는 함수
+        function fun4(str){
+            var result = {};
+            [...str].forEach(function(a){
+                //console.log('데이터마이닝 기능 문제 = '+ a + '결과 = ' + result[a]);
+                if(result[a] > 0 ){
+                     result[a]++;
+                } else { 
+                    result[a] = 1;
+                }
+            });
+            console.log('문제8= ');
+            console.log(result);
+        }
+        //fun4('aacbbb');
+        //이해가 안가 풀어서 써본다..
+        //=> 
+    </script>
+
+    <script>// 객체지향1. constructor를 만들어보자
+
+        // var studen1 = { 
+        //     name: 'Kim', 
+        //     age: 15,
+        //     sayHi: function(){
+        //         console.log(`안녕하세요 ${this.name}입니다.`);
+        //     }
+        // }
+
+        //studen1.sayHi();
+
+        function Student(name, age){
+            this.name = name;
+            this.age = age;
+            this.sayHi = function(){
+                console.log(`안녕하세요 ${this.name}입니다.`);
+            };
+        }
+
+        // 객체지향2. prototype(유전자)
+        //prototype에 값을 추가하면 모든 자식들이 물려받기 가능
+        Student.prototype.gender = '남';
+        var studen1 = new Student('문혜란', 31);
+        studen1.sayHi();
+
+        var arr = [1,2,3];
+        var arr = new Array(1,2,3);
+        //console.log(studen1.toString());
+
+        //동작원리 1. student1이 직접 gender를 가지고 있는가?
+        //       2. 없어? 그럼 student1의 부모 유전자가 gender를 가지고 있는가?
+        //       3. 있어? 그럼 실행!!
+        //특징1. prototype은 constructor 함수에만 몰래 생성된다.
+        //특징2. 내 부모 유전자(부모의 prototype)를 검사하고 싶다면 __proto__ 를 출력 //studen1.__proto__
+        //특징3. __proto__를 직접 등록하면 object끼리 상속기능을 구현가능
+        var parent = {name : 'Kim'};
+        var child = {};
+        child.__proto__ = parent;
+        console.log(child.name);
+
+        //상속!!
+
+    </script>
+
+    <script>// constructor, prototype 연습문제
+    //0. constructor 만들기
+    //추가적으로 student1.sayHi()를 사용하면 "안녕 나는 Kim이야"라는 글자가 콘솔창에 나오도록 추가
+    //var student1 = {name : 'Kim', age : 20}
+    //var student2 = {name : 'Park', age : 21}
+    //var student3 = {name : 'Lee', age : 22}
+
+    function FnStudent(name, age){
+        this.name = name;
+        this.age = age;
+        // this.sayHi = function(){
+        //     console.log(`안녕 나는 ${this.name}이야`);
+        // }
+    }
+
+    var student1 = new FnStudent('Kim', 20);
+    var student2 = new FnStudent('Park', 21);
+    var student3 = new FnStudent('Lee', 22);
+
+    //1. 출력의 결과는?
+    function Parent(){
+        this.name = 'Kim';
+    }
+    var a = new Parent();
+
+    a.__proto__.name = 'Park';
+    //console.log(a.name);
+
+    //2. 의도한 대로 출력되지 않는다. 그 이유는??
+    FnStudent.prototype.sayHi = () => {
+        console.log(`안녕 나는 ${this.name}이야`);
+    }
+    var student4 = new FnStudent('Moon', 31);
+    student4.sayHi(); //왜 이 코드가 제대로 안나올까??
+    /* 답안
+    sayHi() 라는 함수를 prototype에 추가할 때 arrow function을 사용했다.
+    arrow function은 this를 바깥에 있는 this를 그대로 사용하고 싶을 때 쓰는 함수.
+    sayHi 함수에 그냥 this 하나만 출력해보면 window가 출력된다.(strict mode에선 undefined)
+    그리하여 this가 이상해서 문제가 되었던것.
+    */
+    
+    //3. 모든 array에 적용할 수 있는 함수를 직접 새로 만들려면 어떻게 해야할까?
+    //모든 array에 붙일 수 있는, array 내에 있는 3이라는 값을 제거해주는 유용한 함수를 만들고 싶다.
+    var arr = [1,2,3];
+    
+    Array.prototype.remove = function(x){
+        for(var i = 0; i < this.length; i++){
+            if(this[i] === x){
+                this.splice(i,1);
+            }
+        }
+    }
+
+    arr.remove(3);
+
+    console.log(arr);//[1,2]
+
+    
+    </script>
+
+    <script>// ES5에서 상속기능 구현 Object.create(프로토타입object);
+        //prototype constructor 옛날 문법...
+        
+        //var parent5 = {name :'Kim', age: 50};
+        //var child5 = Object.create(parent5);
+        //child5.age = 20;
+        //var grandChild5 = Object.create(child5);
+        //grandChild5.age;
+    </script>
+
+    <script>// ES6방식으로 안쉽게 구현하는 상속기능 Class
+        class parent{
+            constructor(param){
+                this.name = 'Kim';
+                this.param = param;
+                //this.sayHi = function(){ console.log(('hello'))}
+            }
+            sayHi(){
+                console.log('hello');//parent.prototype에 추가됨
+            }
+        }
+
+        var child = new parent('param');
+        child.__proto__; // = parent.prototype 이 출력됨
+        Object.getPrototypeOf(child); // 위와 같음
+    </script>
+
+    <script>// class를 복사하는 extends / super
+        class grandPapa{
+            constructor(name){
+                this.성 = 'Kim';
+                this.이름 = name;
+            }
+            sayHi(){
+                console.log('안녕 저는 할아버지에요');
+            }
+        }
+        var grandPapa1 = new grandPapa('만덕');
+
+        class father extends grandPapa{
+            constructor(name){
+                super(name); //부모 class의 constructor를 의미
+                this.나이 = 50;
+            }
+            sayHi(){
+                console.log('안녕 저는 아버지에요');
+                super.sayHi(); //부모 class의 prototype을 의미
+            }
+        }
+        var father1 = new father('만수');
+    </script>
+
+    <script>//getter, setter 
+        //함수를 만들어 object 데이터를 다루는 이유
+        //1. object 안의 데이터가 복잡할 수록 함수 만들어놓는게 데이터 꺼내기 쉽다.
+        //2. 내부에 있는 변수를 건드리지 않아서 실수를 방지할 수 있어 안전하다.
+        var human = {
+            name: 'Park',
+            age: 30,
+            nextAge(){
+                return this.age + 1; //this = human 오브젝트
+            },
+            setAge(UpdAge){
+                this.age = parseInt(UpdAge); //형변환을 해줌으로써 안전장치 기능개발
+            },
+            //get 함수들(getter) 특징 : return이 있어야 한다.
+            get getName(){
+                return this.name;
+            },
+            //set 함수들(setter) 특징 : 파라미터가 1개 있어야 한다.
+            set setName(UpdName){ //set 키워드를 앞에 쓰면 소괄호를 쓰지않아도 된다.
+                this.name = UpdName;
+            }
+        }
+
+        human.setAge(20);
+        human.setName = 'Moon';
+
+        class human1{
+            constructor(){
+                this.name = 'Park';
+                this.age = 20;
+            }
+            get nextAge(){
+                return this.age + 1
+            }
+            set setAge(x){
+                this.age = x;
+            }
+        }
+
+        var human2 = new human1();
+
+    </script>
+
+    <script>//class, extends, getter, setter 연습문제
+        //1. 직접 class 구조 만들어보기
+        //여러 강아지 정보들을 담은 유사한 오브젝트 자료형을 테스트삼아 몇개 만들어보기
+        //var dog1 = {type: '말티즈', color: 'white'};
+        //var dog2 = {type: '진돗개', color: 'brown'};
+        class Dog{
+            constructor(type, color){
+                this.type = type;
+                this.color = color;
+            }
+            yearOld(){
+                console.log(this);
+                if(this instanceof Cat){
+                    this.age++;
+                }
+            }
+        }
+        var dog1 = new Dog('말티즈', 'white');
+        var dog2 = new Dog('진돗개', 'brown');
+
+        //2.이번엔 고양이 정보들을 담은 고양이 오브젝트 만들기
+        //  추가적으로 dog class와 유사하기 때문에 extends라는 문법을 써보기
+        //var cat1 = {type: '코숏', color: 'white', age: 5};
+        //var cat2 = {type: '러시안블루', color: 'brown', age: 2};
+
+        class Cat extends Dog{
+            constructor(type, color, age){
+                super(type, color);
+                this.age = age;
+            }
+        }
+        var cat1 = new Cat('코숏', 'white', 5);
+        var cat2 = new Cat('러시안블루', 'brown', 3);
+        cat1.yearOld();
+
+        //3. dog, cat에 .한살먹기() 라는 함수 추가하기
+        /* instanceof 연산자
+            a instanceof b 이렇게 쓰면 a가 b로부터 생성된 오브젝트인지 아닌지를 true/false로 알려주는 연산자이다.
+            그래서 한살먹기() 함수를 만들고 this.age++를 해주는 기능을 넣었는데,
+            이 기능은 this가 instanceof Cat인 경우에만 실행하도록 if문 추가
+        */
+
+
+        //4. get/set 이용해보자.
+        // 1) 모든 Unit의 인스턴스는 공격력, 체력 속성이 있으며 기본 공격력은 5, 기본 체력은 100으로 설정
+        // 2) 모든 Unit의 인스턴스는 전투력을 측정해주는 battlePoint라는 getter가 있다.
+        //    console.log(인스턴스.battlePoint) 이렇게 사용하면 현재 공력력과 체력을 더한 값을 콘솔창에 출력
+        // 3) 모든 Unit의 인스턴스는 heal이라는 setter가 있다.
+        //    인스턴스.heal = 50 이렇게 사용하면 체력 속성이 50 증가해야 한다.
+        // *인스턴스는 class로부터 새로 생성되는 오브젝트를 뜻한다.
+        class Unit{
+            constructor(){
+                this.attack = 5;
+                this.health = 100;
+            }
+            get battlePoint(){
+                return this.attack + this.health;
+            }
+            set heal(heal){
+                this.health = this.health + heal;
+            }
+        }
+
+        //5. get/set을 이용해보자2
+        // 1) data 오브젝트 안에 setter 역할 함수를 만들어,
+        //    1,2,3,4 이렇게 아무 자연수를 파라미터로 입력하면 홀수는 odd, 짝수는 even 이라는 속성에
+        //    array 형태로 저장되어야 한다.
+        // 예를들면 data.setter함수(1,2,3,4,5)이렇게 입력하면
+        // data = {odd:[1,3,5], even:[2,4]} 이렇게 저장되면 된다.
+
+        // 2) data 오브젝트 안에 getter 역할 함수를 만들어,
+        //    odd, even에 저장된 모든 데이터들이 숫자순으로 정렬되어 출력되어야 한다.
+        
+        var data = {
+            odd: [1,5],
+            even: [2,4],
+            setData: function(...num){
+                num.forEach((a) => {
+                    //forEach 안의 function(){} 안에서의 this는 window 이런 뜻
+                    //그래서 this를 위해 arrow function으로 바꿔주면 된다.
+                    if( a % 2 == 0 ){
+                        this.even.push(a);
+                    }else{
+                        this.odd.push(a);
+                    }
+                });
+                console.log(data);
+            },
+            get getData(){
+                return [...this.odd, ...this.even].sort();
+            }
+        };
+
+        console.log(data.getData);
     </script>
 </body>
 </html>
