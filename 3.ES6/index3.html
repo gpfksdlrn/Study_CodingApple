@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
     <script>
         //Destructuring 문법
     
@@ -55,11 +56,242 @@
 
         //모든걸 다 import 해오는 *기호
         //default는 별도로 가져와야한다
-        import c, * as 별명 from './library.js';
-        console.log(별명.a);
-        console.log(c);
+        //import c, * as 별명 from './library.js';
+        //console.log(별명.a);
+        //console.log(c);
 
     </script>
     
+    <script>//콜백함수
+        function fnFirst(test){
+            console.log(1);
+            test();
+        }
+
+        function fnSecond(){
+            console.log(2);
+        }
+
+        fnFirst(fnSecond);
+    </script>
+
+    <script>//ES6 Promise
+        var 프로미스 = new Promise(function(success, fail){
+            var 어려운연산 = 1+1;
+            success(어려운연산);
+        });
+        // 프로미스
+        //     .then(function(result){ //성공
+        //         console.log('성공!!');
+        //         console.log(result);
+        //     })
+        //     .catch(function(){ //실패
+        //         console.log('실패');
+        //     })
+        //     .finally(function(){
+
+        //     })
+    </script>
+
+    <img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+    <button id="btn">버튼</button>
+    <script> //ES6 Promise 간단 연습문제
+        //Q1. <img> 이미지 로딩 성공시 특정 코드를 실행
+        /*
+        var imgLoad = new Promise(function(success, fail){
+            var img = document.querySelector('#test');
+            
+            img.addEventListener('load', function(){
+                success();
+            });
+            img.addEventListener('error', function(){
+                fail();
+            });
+            
+        });
+
+        imgLoad
+            .then(function(){
+                console.log('성공!!')
+            })
+            .catch(function(){
+                console.log('실패ㅠㅠ');
+            })
+        */    
+
+        //Q2. Ajax 요청이 성공하면 무언가 코드를 실행
+        /* https://codingapple1.github.io/hello.txt 라는 경로로 
+            GET 요청을 하면 인삿말이 하나 딸려옵니다. 여기로 GET 요청을 해서 성공하면
+            Promise의 then 함수를 이용해서 Ajax로 받아온 인삿말을 콘솔창에 출력해주고 싶습니다.
+            어떻게 하면 될까요? 
+            (jQuery done함수 자체에 Promise 기능이 있기 때문에 코드가 약간 중복도 많고 
+            쓸데없을 수 있지만 연습삼아 해봅시다.)
+        */
+        /*
+        var ajaxTest = new Promise(function(success, fail){
+           $.get('https://codingapple1.github.io/hello.txt').done(function(result){
+               success(result);
+           });
+        });
+       */
+       //Q3. Promise chaining
+       /* 
+       Q2번 요청 후 그게 완료되면 hello2.txt GET 요청
+       url = https://codingapple1.github.io/hello2.txt
+       그게 완료되면 hello2.txt 결과를 콘솔창에 출력
+       */
+        /*
+            ajaxTest
+                .then(function(txt){
+                    //console.log(txt);
+                    var ajaxTest2 = new Promise(function(success, fail){
+                        $.get('https://codingapple1.github.io/hello2.txt').done(function(result2){
+                            success(result2);
+                        });
+                    });
+                    return ajaxTest2;
+                })
+                .then(function(txt){
+                    console.log(txt);
+                });
+        */
+    </script>
+
+    <script> //Promise 어려워서 싫으면 async/await을 사용
+        //성공만 판정 가능
+        //return Promise.reject('실패임') //강제로 실패!!
+        async function Plus(){
+            var promiseTest = new Promise(function(success, fail){
+                document.querySelector('#btn').addEventListener('click',
+                function(){
+                    success('성공했어요');
+                });
+            }); 
+            
+            //async function 안에서 쓰는 await은 then 대신 사용 가능!
+            //await은 프로미스 실패시 에러나고 멈춘다.
+            try {
+                var result = await promiseTest;
+                console.log(result);
+            } catch {
+                console.log('promiseTest 연산이 잘안되었군요!');
+            }
+        }
+        //Plus();
+    </script>
+
+    <script> //for in / for of 반복문과 enumerable, iterable 속성
+        class Parent{
+
+        }
+        Parent.prototype.name = "Park";
+        var obj = new Parent();
+        
+        // for ( var i = 0; i < 3; i++){
+        // }
+        //[1,2,3].forEach(); //(Array 전용)
+
+        //for in 반복문(Object 전용)
+        //Object에 있던 값을 전부 하나씩 꺼내서 사용할 때
+        //특징1. enumerable 한 것만 반복해준다.
+        //콘솔창에 'Object.getOwnPropertyDescriptor(obj, 'name');' 입력해보면 'Kim' 외에 숨겨진 정보 3개 있음을 알 수 있다.
+        //특징2. 부모의 prototype도 반복해준다.
+        for (var key in obj){ 
+            if(obj.hasOwnProperty(key)){
+                //console.log(key);
+                //console.log(obj[key]);
+            }
+        }
+
+
+        var arr = [2,3,4,5];
+        //for of 반복문(Array, 문자, arguments, NodeList, Map, Set)
+        for (var data of arr){ //(iterable 전용)
+            //console.log(data);
+        }
+
+        //console.log(arr[Symbol.iterator]());
+        
+    </script>
+
+    <script>//Symbol() 함수
+        var symbol = Symbol('설명');
+        //Symbol은 Object자료형에 비밀스런 key값을 부여하고 싶을 때 쓰임
+        //원래 Object 자료형에는 문자로만 key값을 입력할 수 있습니다.
+        //문자 아닌걸 입력해도 문자로 자동으로 치환되고요.
+        //ES6부터는 Symbol도 key값으로 입력할 수 있다.
+        var weight = Symbol('내 진짜 몸무게');
+        var height = Symbol('내 진짜 키');
+
+        var person = { name: 'Moon', [height] : 160}; //직접 Symbol을 추가할 수 있다.
+        person.weight = 100;
+        person[weight] = 200;
+        person[height] = 160;
+
+        console.log(person);
+        for(var key in person){
+            console.log(person[key]);
+        }
+        //특징1. 설명이 같다고 같은 Symbol이 아님
+        var a = Symbol('설명1');
+        var b = Symbol('설명1');
+        //a === b - false
+
+        //특징2. 전역변수 같은 전역Symbol?
+        var a = Symbol.for('설명1');
+        var b = Symbol.for('설명1');
+        //a === b - true
+
+        //특징3. 기본 내장 Symbol들
+        var arr = [2,3,4];
+        arr[Symbol.iterator]; //array에 집어넣는 기본 Symbol
+        
+    </script>
+
+    <script>//Map, Set 자료형
+        //1.Map 자료형
+        //Map 자료형은 자료간의 연관성을 표현하기 위해 사용
+        //Object 자료형은 자료 이름으로 글자만 가능하지만, Map 자료형은 다 가능
+        var person = new Map();
+        person.set('name', 'Moon');
+        person.set('age', 20);
+        person.set(123,'num');
+        person.set([1,2,4],'lotto');
+
+        //Map에서 자료 꺼내는 법
+        //console.log(person.get('age'));
+
+        //Map에 저장된 자료 갯수 세는 법
+        //console.log(person.size);
+
+        //반복문으로 Map에서 자료 꺼내는 법
+        for(var key of person.keys()){
+            //console.log(key);
+        }
+
+
+        //2.Set 자료형
+        //중복 자료를 허용하지 않는 Array 비슷한것
+        var 출석부 = ['john', 'tom', 'andy', 'tom'];
+        var 출석부2 = new Set(['john', 'tom', 'andy', 'tom']);
+
+        //Set 자료형에 자료 추가하기
+        출석부2.add('sally');
+        //Set 자료형에 자료 제거하기
+        출석부2.delete('sally');
+        //Set 자료형에 자료 있는지 확인
+        출석부2.has('sally'); //true, false
+        //Set에 저장된 자료 갯수
+        출석부2.size
+        //반복문으로 Set에서 자료 꺼내는 법
+        for(var key of 출석부2.keys()){
+            console.log(key);
+        }
+        //특히 Array의 데이터 중복제거할 때 많이 쓰임
+        출석부3 = new Set(출석부); //Array를 Set으로 바꾸기
+        출석부 = [...출석부3]      //Set을 Array로 바꾸기
+
+    </script>
 </body>
 </html>
