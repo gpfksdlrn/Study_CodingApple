@@ -293,5 +293,29 @@
         출석부 = [...출석부3]      //Set을 Array로 바꾸기
 
     </script>
+
+    <custom-input name="비번"></custom-input>
+    <custom-input name="이메일"></custom-input>
+    <script>//Web Components 커스텀 HTML 태그 만들기
+        class 클래스 extends HTMLElement{
+            connectedCallback(){
+                let name = this.getAttribute('name');
+                this.innerHTML = `<label>${name}인풋이에요</label><input>`;
+
+                // let 변수 = document.createElement('label');
+                // this.appendChild(변수);
+            }
+
+            //attribute가 변경될 때 특정 코드 실행이 가능하다
+            static get observedAttributes(){ //변경을 감시할 attribute들을 array로 적으면
+                                             //밑의 attributeChangedCallback() 함수를 실행해줌
+                return ['name'];
+            }
+            attributeChangedCallback(){ //attribute 변경시 실행할 코드
+                console.log(this.getAttribute('name'));
+            }
+        }
+        customElements.define('custom-input', 클래스);
+    </script>
 </body>
 </html>
